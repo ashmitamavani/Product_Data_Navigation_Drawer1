@@ -1,4 +1,6 @@
-package com.example.product_data_navigation_drawer;
+package com.example.product_data_navigation_drawer.Interface;
+
+import com.example.product_data_navigation_drawer.Model.Model;
 
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -11,6 +13,6 @@ public interface API_Interface {
     Call<Model>
     signUpUser(@Field("uid") int uid,
                @Field("pname") String pname,
-               @Field("pprice")String pprice,
-               @Field("pdes")String pdes);
+               @Field("pdes")String pprice,
+               @Field("pprice")String pdes);
 }

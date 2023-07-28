@@ -1,8 +1,8 @@
-package com.example.product_data_navigation_drawer;
+package com.example.product_data_navigation_drawer.Model;
 
 public class Model {
     int connection;
-    int productadd;
+    int productaddd;
 
     public int getConnection() {
         return connection;
@@ -12,19 +12,19 @@ public class Model {
         this.connection = connection;
     }
 
-    public int getProductadd() {
-        return productadd;
+    public int getProductaddd() {
+        return productaddd;
     }
 
-    public void setProductadd(int result) {
-        this.productadd = result;
+    public void setProductaddd(int result) {
+        this.productaddd = result;
     }
 
     @Override
     public String toString() {
         return "RegisterUser{" +
                 "connection=" + connection +
-                ", productadd=" + productadd +
+                ", productadd=" + productaddd +
                 '}';
     }
 

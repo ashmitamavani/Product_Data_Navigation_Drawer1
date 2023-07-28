@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.example.product_data_navigation_drawer.Fragment.Add_product_Fragment;
+import com.example.product_data_navigation_drawer.Fragment.ViewProduct_Fragment;
 import com.example.product_data_navigation_drawer.R;
 import com.google.android.material.navigation.NavigationView;
 
@@ -45,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 if (id==R.id.viewproduct)
                 {
-
+                   addFragment(new ViewProduct_Fragment());
                 }
                 if (id==R.id.deleteproduct)
                 {
