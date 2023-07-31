@@ -74,15 +74,26 @@
             android:layout_margin="10dp"
             android:background="@drawable/shape"/>
         <Button
-            android:id="@+id/button"
+            android:id="@+id/Addbutton"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="0.9"
             android:backgroundTint="#7F5353"
+            android:layout_marginHorizontal="20dp"
             android:text="ADD PRODUCT"
             android:layout_marginVertical="30dp"
             android:textSize="20dp"
-            android:textStyle="italic"/>
+            android:textStyle="italic" />
+
+
+
+            <Button
+                android:id="@+id/btn_updtProduct"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:backgroundTint="#7F5353"
+                android:text="Update Product" />
 
 
     </LinearLayout>

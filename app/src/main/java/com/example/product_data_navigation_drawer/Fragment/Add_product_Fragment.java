@@ -17,7 +17,7 @@ import android.widget.Toast;
 
 import com.example.product_data_navigation_drawer.Instance_class.Instance_class;
 import com.example.product_data_navigation_drawer.R;
-import com.example.product_data_navigation_drawer.Model.Model;
+import com.example.product_data_navigation_drawer.Model.AddProduct_Model;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -27,13 +27,15 @@ import retrofit2.Response;
 public class Add_product_Fragment extends Fragment {
     AppCompatEditText uid, pname, pprice, pdes;
     ImageView pimg;
-    Button button;
-    String n1, n2, n3, n4;
+
+    Button Addbutton,btn_updtProduct;
+    String n1, n2, n3;
     Uri image_uri;
     String imagename;
     String imagepath;
     Bitmap bitmap;
     int id;
+    private Object CropImage;
 
 
     @Override
@@ -46,8 +48,9 @@ public class Add_product_Fragment extends Fragment {
         pdes = view.findViewById(R.id.pdes);
         pprice = view.findViewById(R.id.pprice);
         pimg = view.findViewById(R.id.pimg);
-        button = view.findViewById(R.id.button);
-        button.setOnClickListener(new View.OnClickListener() {
+        Addbutton = view.findViewById(R.id.Addbutton);
+
+        Addbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 id = uid.getText().length();
@@ -55,35 +58,30 @@ public class Add_product_Fragment extends Fragment {
                 n2 = pdes.getText().toString();
                 n3 = pprice.getText().toString();
 
-                Instance_class.callAPI().signUpUser(id, "" + n1, "" + n2, "" + n3).enqueue(new Callback<Model>() {
+                Instance_class.callAPI().signUpUser(id, "" + n1, "" + n2, "" + n3).enqueue(new Callback<AddProduct_Model>() {
                     @Override
-                    public void onResponse(Call<Model> call, Response<Model> response) {
+                    public void onResponse(Call<AddProduct_Model> call, Response<AddProduct_Model> response) {
                         Log.d("TTT", "onResponse: " + response.body());
-                        if (response.body().getConnection() == 1) {
+                        if (response.body().getConnection() == 1&&response.body().getProductaddd() == 1) {
 
-                            if (response.body().getProductaddd() == 1) {
 
-                                Log.d("TTT", "Registered..");
-                                Toast.makeText(Add_product_Fragment.this.getContext(), "User Registered", Toast.LENGTH_LONG).show();
-                            } else if (response.body().getProductaddd() == 2) {
+                            Log.d("TTT", "Registered..");
+                            Toast.makeText(Add_product_Fragment.this.getContext(), "User Registered", Toast.LENGTH_LONG).show();
+                        } else if (response.body().getProductaddd()==0) {
 
-                                Log.d("TTT", "User already Registered");
-                                Toast.makeText(Add_product_Fragment.this.getContext(), "User already Registered", Toast.LENGTH_LONG).show();
-                            } else
-                            {
-                                Log.d("TTT", "Not Registered..");
-                                Toast.makeText(Add_product_Fragment.this.getContext(), "User not Registered", Toast.LENGTH_LONG).show();
-                            }
-                        } else
+                            Log.d("TTT", "Product not added");
+                            Toast.makeText(Add_product_Fragment.this.getContext(), "Product not added", Toast.LENGTH_LONG).show();
+                        }
+                        else
                         {
-                            Log.d("TTT", "Something went Wrong..!");
-                            Toast.makeText(Add_product_Fragment.this.getContext(), "Something went Wrong..!", Toast.LENGTH_LONG).show();
+                            Log.d("TTT", "Something went wrong.");
+                            Toast.makeText(Add_product_Fragment.this.getContext(), "Something went wrong..", Toast.LENGTH_LONG).show();
                         }
                     }
 
 
                     @Override
-                    public void onFailure(Call<Model> call, Throwable t) {
+                    public void onFailure(Call<AddProduct_Model> call, Throwable t) {
                         Log.e("TTT", "onFailure: " + t.getLocalizedMessage());
 
                     }

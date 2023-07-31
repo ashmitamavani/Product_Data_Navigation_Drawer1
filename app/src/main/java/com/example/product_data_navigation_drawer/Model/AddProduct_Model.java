@@ -1,6 +1,6 @@
 package com.example.product_data_navigation_drawer.Model;
 
-public class Model {
+public class AddProduct_Model {
     int connection;
     int productaddd;
 
