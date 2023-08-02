@@ -6,10 +6,7 @@ public class Viewuser_Model {
     int connection;
     int result;
     List<Productdata_Model>productdata;
-    public Viewuser_Model(int connection, int result) {
-        this.connection = connection;
-        this.result = result;
-    }
+
 
     public int getConnection() {
         return connection;
@@ -27,11 +24,20 @@ public class Viewuser_Model {
         this.result = result;
     }
 
+    public List<Productdata_Model> getProductdata() {
+        return productdata;
+    }
+
+    public void setProductdata(List<Productdata_Model> productdata) {
+        this.productdata = productdata;
+    }
+
     @Override
     public String toString() {
         return "Viewuser_Model{" +
                 "connection=" + connection +
                 ", result=" + result +
+                ", productdata=" + productdata +
                 '}';
     }
 }

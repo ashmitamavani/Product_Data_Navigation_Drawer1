@@ -32,7 +32,7 @@ public class Recyclerview_Adapter extends RecyclerView.Adapter<Recyclerview_Adap
 
     @Override
     public void onBindViewHolder(@NonNull Recyclerview_Adapter.Holder holder, int position) {
-        holder.t1.setText(""+productdata.get(position).getID());
+        holder.t1.setText(productdata.get(position).getID());
         holder.t2.setText(""+productdata.get(position).getUID());
         holder.t3.setText(""+productdata.get(position).getPNAME());
         holder.t4.setText(""+productdata.get(position).getPDES());

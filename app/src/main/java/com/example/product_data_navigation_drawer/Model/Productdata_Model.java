@@ -8,14 +8,7 @@ public class Productdata_Model {
     String PPRICE;
     String PIMG;
 
-    public Productdata_Model(String ID, String UID, String PNAME, String PDES, String PPRICE, String PIMG) {
-        this.ID = ID;
-        this.UID = UID;
-        this.PNAME = PNAME;
-        this.PDES = PDES;
-        this.PPRICE = PPRICE;
-        this.PIMG = PIMG;
-    }
+
 
     public String getID() {
         return ID;

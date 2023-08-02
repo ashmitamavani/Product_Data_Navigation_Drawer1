@@ -48,6 +48,7 @@ public class ViewProduct_Fragment extends Fragment {
         editText_uid = view.findViewById(R.id.edittext_uid);
         button = view.findViewById(R.id.button);
         recyclerView = view.findViewById(R.id.recyclerview);
+        recyclerView.setLayoutManager(new LinearLayoutManager(ViewProduct_Fragment.this.getContext()));
         ViewData();
         return view;
 
@@ -60,32 +61,17 @@ public class ViewProduct_Fragment extends Fragment {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                id = editText_uid.getText().length();
+                id = Integer.parseInt(editText_uid.getText().toString());
 
-                Instance_class.callAPI().viewProduct(id).enqueue(new Callback<Viewuser_Model>() {
+                Instance_class.callAPI().viewProduct(2).enqueue(new Callback<Viewuser_Model>() {
                     @Override
                     public void onResponse(Call<Viewuser_Model> call, Response<Viewuser_Model> response) {
-                        Log.d("TTT", "onResponse: " + response.body());
+                        Log.d("TTT", "onResponse: " + response.body().getProductdata());
                         if (response.body().getConnection() == 1 && response.body().getResult() == 1) {
 
-                            for (int i = 0; i < productdata.size(); i++) {
-
-                                JSONObject productobj = null;
-                                try {
-                                    productobj = jsonArray.getJSONObject(i);
-                                    String ID = productobj.getString("ID");
-                                    String UID = productobj.getString("UID");
-                                    String PNAME = productobj.getString("PNAME");
-                                    String PDES = productobj.getString("PDES");
-                                    String PPRICE = productobj.getString("PPRICE");
-                                    String PIMG = productobj.getString("PIMG");
-                                    Productdata_Model productData = new Productdata_Model(ID, UID, PNAME, PDES, PPRICE, PIMG);
-                                    productdata.add(productData);
-                                    Log.d("TTT", "onResponse: data" + productdata);
-                                } catch (JSONException e) {
-                                    throw new RuntimeException(e);
-                                }
-                            }
+                            //Productdata_Model productdata_model=new Productdata_Model();
+                            productdata.addAll(response.body().getProductdata());
+                            Log.d("UUU", "onResponse: "+productdata.get(0).getPNAME());
                             Recyclerview_Adapter adapter = new Recyclerview_Adapter(ViewProduct_Fragment.this, productdata);
                             recyclerView.setAdapter(adapter);
                             Toast.makeText(ViewProduct_Fragment.this.getContext(), "Data Found...", Toast.LENGTH_LONG).show();

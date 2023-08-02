@@ -15,11 +15,12 @@ public interface API_Interface {
     signUpUser(@Field("uid") int uid,
                @Field("pname") String pname,
                @Field("pdes")String pprice,
-               @Field("pprice")String pdes);
+               @Field("pprice")String pdes,
+               @Field("pimg") String imgString);
 
 
     @FormUrlEncoded
-    @POST("viewProduct.php")
+    @POST("ViewProduct.php")
     Call<Viewuser_Model>
-    viewProduct(@Field("userid") int uid);
+    viewProduct(@Field("uid") int uid);
 }
